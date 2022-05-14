@@ -1,6 +1,8 @@
 import React from 'react';
 import {createRoot} from 'react-dom/client';
+import {Provider} from 'react-redux';
 
+import store from './store';
 import Home from './Home';
 
 const render = (template) => {
@@ -9,4 +11,14 @@ const render = (template) => {
     root.render(template);
 };
 
-render(<Home />);
+const renderApp = () => {
+        const appTemplate = (
+            <Provider store={store}>
+                <Home />
+            </Provider>
+        );
+        
+        render(appTemplate);
+};
+
+renderApp();
