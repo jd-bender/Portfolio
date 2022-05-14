@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 
 import TabPanel from './TabPanel';
 
+import './styles/Home.css';
+
 export default () => {
     const [selectedTabIndex, setSelectedTabIndex] = React.useState(0);
 
@@ -13,7 +15,7 @@ export default () => {
 
     return (
         <>
-            <div>Jake Bender Portfolio</div>
+            <div className="red">Jake Bender Portfolio</div>
             <Tabs value={selectedTabIndex} onChange={handleSelectedTabIndexChange}>
                 <Tab label="Projects" />
                 <Tab label="Resume" />
