@@ -2,11 +2,29 @@
 import { useState, SyntheticEvent } from "react";
 import { Tabs, Tab } from "@mui/material";
 
-const Navigation = () => {
-    const [activeTab, setActiveTab] = useState(0);
+import TabPanel from "./TabPanel";
 
-    const handleActiveTabChange = (_event: SyntheticEvent, newTab: number) => {
-        setActiveTab(newTab);
+import useQueryParams from "./useQueryParams";
+
+const Navigation = () => {
+    const [params, setParam] = useQueryParams();
+
+    let tab = 0;
+
+    if (params.get("tab")) {
+        tab = Number(params.get("tab"));
+    } else {
+        setParam("tab", tab);
+    }
+
+    const [activeTab, setActiveTab] = useState(tab);
+
+    const handleActiveTabChange = (
+        _event: SyntheticEvent,
+        newActiveTabIndex: number,
+    ) => {
+        setActiveTab(newActiveTabIndex);
+        setParam("tab", newActiveTabIndex);
     };
 
     return (
@@ -15,6 +33,13 @@ const Navigation = () => {
                 <Tab label="About Me" />
                 <Tab label="Projects" />
             </Tabs>
+
+            <TabPanel index={0} activeTabIndex={activeTab}>
+                <p>about me page</p>
+            </TabPanel>
+            <TabPanel index={1} activeTabIndex={activeTab}>
+                <p>projects page</p>
+            </TabPanel>
         </>
     );
 };
