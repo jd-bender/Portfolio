@@ -4,7 +4,7 @@ import { Tabs, Tab } from "@mui/material";
 
 import TabPanel from "./TabPanel";
 
-import useQueryParams from "./useQueryParams";
+import useQueryParams from "../hooks/useQueryParams";
 
 const Navigation = () => {
     const [params, setParam] = useQueryParams();
@@ -29,7 +29,7 @@ const Navigation = () => {
 
     return (
         <>
-            <Tabs value={activeTab} onChange={handleActiveTabChange}>
+            <Tabs value={activeTab} onChange={handleActiveTabChange} centered>
                 <Tab label="About Me" />
                 <Tab label="Projects" />
             </Tabs>

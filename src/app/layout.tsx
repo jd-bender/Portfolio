@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import "../globals.css";
-import { IParent } from "./interfaces";
+import { IParent } from "../interfaces";
 
 export const metadata: Metadata = {
     title: "Jake Bender",

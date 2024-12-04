@@ -1,4 +1,4 @@
-import { IParent } from "./interfaces";
+import { IParent } from "../interfaces";
 
 interface ITabPanel extends IParent {
     index: number;
