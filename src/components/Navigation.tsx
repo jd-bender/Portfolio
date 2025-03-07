@@ -1,5 +1,5 @@
 "use client";
-import { useState, SyntheticEvent } from "react";
+import { useState, useEffect, SyntheticEvent } from "react";
 import { Tabs, Tab } from "@mui/material";
 
 import TabPanel from "./TabPanel";
@@ -11,7 +11,19 @@ import useQueryParams from "../hooks/useQueryParams";
 
 const Navigation = () => {
     const [params, setParam] = useQueryParams();
-    const [activeTab, setActiveTab] = useState(params.get("tab") || "about-me");
+
+    const queryParamTab = params.get("tab");
+    const defaultActiveTab = "about-me";
+
+    const [activeTab, setActiveTab] = useState(
+        queryParamTab || defaultActiveTab,
+    );
+
+    useEffect(() => {
+        if (!queryParamTab) {
+            setParam("tab", defaultActiveTab);
+        }
+    }, []);
 
     const handleActiveTabChange = (
         _event: SyntheticEvent,
