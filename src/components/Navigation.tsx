@@ -11,31 +11,31 @@ import useQueryParams from "../hooks/useQueryParams";
 
 const Navigation = () => {
     const [params, setParam] = useQueryParams();
-    const [activeTab, setActiveTab] = useState(Number(params.get("tab")) || 0);
+    const [activeTab, setActiveTab] = useState(params.get("tab") || "about-me");
 
     const handleActiveTabChange = (
         _event: SyntheticEvent,
-        newActiveTabIndex: number,
+        newActiveTabName: string,
     ) => {
-        setActiveTab(newActiveTabIndex);
-        setParam("tab", newActiveTabIndex);
+        setActiveTab(newActiveTabName);
+        setParam("tab", newActiveTabName);
     };
 
     return (
         <>
             <Tabs value={activeTab} onChange={handleActiveTabChange} centered>
-                <Tab label="About Me" />
-                <Tab label="Projects" />
-                <Tab label="Contact" />
+                <Tab label="About Me" value="about-me" />
+                <Tab label="Projects" value="projects" />
+                <Tab label="Contact" value="contact" />
             </Tabs>
 
-            <TabPanel index={0} activeTabIndex={activeTab}>
+            <TabPanel name="about-me" activeTabName={activeTab}>
                 <AboutMe />
             </TabPanel>
-            <TabPanel index={1} activeTabIndex={activeTab}>
+            <TabPanel name="projects" activeTabName={activeTab}>
                 <Projects />
             </TabPanel>
-            <TabPanel index={2} activeTabIndex={activeTab}>
+            <TabPanel name="contact" activeTabName={activeTab}>
                 <Contact />
             </TabPanel>
         </>

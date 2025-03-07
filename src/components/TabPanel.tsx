@@ -1,17 +1,17 @@
 import { IParent } from "../interfaces";
 
 interface ITabPanel extends IParent {
-    index: number;
-    activeTabIndex: number;
+    name: string;
+    activeTabName: string;
 }
 
-const TabPanel = ({ children, index, activeTabIndex }: ITabPanel) => (
+const TabPanel = ({ children, name, activeTabName }: ITabPanel) => (
     <div
         role="tabpanel"
-        hidden={activeTabIndex !== index}
+        hidden={activeTabName !== name}
         className="mx-96 mt-20"
     >
-        {activeTabIndex === index && children}
+        {activeTabName === name && children}
     </div>
 );
 
