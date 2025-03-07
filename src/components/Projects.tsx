@@ -1,5 +1,5 @@
 const Projects = () => {
-    return <p>projects page</p>;
+    return <p>{`Repository Link: https://github.com/jd-bender/Portfolio`}</p>;
 };
 
 export default Projects;

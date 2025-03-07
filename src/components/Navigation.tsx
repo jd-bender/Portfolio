@@ -7,27 +7,27 @@ import AboutMe from "./AboutMe";
 import Projects from "./Projects";
 import Contact from "./Contact";
 
-import useQueryParams from "../hooks/useQueryParams";
+// import useQueryParams from "../hooks/useQueryParams";
 
 const Navigation = () => {
-    const [params, setParam] = useQueryParams();
+    // const [params, setParam] = useQueryParams();
 
-    let tab = 0;
+    // let tab = 0;
 
-    if (params.get("tab")) {
-        tab = Number(params.get("tab"));
-    } else {
-        setParam("tab", tab);
-    }
+    // if (params.get("tab")) {
+    //     tab = Number(params.get("tab"));
+    // } else {
+    //     setParam("tab", tab);
+    // }
 
-    const [activeTab, setActiveTab] = useState(tab);
+    const [activeTab, setActiveTab] = useState(0);
 
     const handleActiveTabChange = (
         _event: SyntheticEvent,
         newActiveTabIndex: number,
     ) => {
         setActiveTab(newActiveTabIndex);
-        setParam("tab", newActiveTabIndex);
+        // setParam("tab", newActiveTabIndex);
     };
 
     return (
